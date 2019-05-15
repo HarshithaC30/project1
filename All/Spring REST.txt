@@ -1,0 +1,7 @@
+RESTful WebServices
+
+https://www.youtube.com/watch?v=xkKcdK1u95s&list=PLqq-6Pq4lTTZh5U8RbdXq0WaYvZBz2rbn
+
+Spring REST
+
+https://www.journaldev.com/2552/spring-rest-example-tutorial-spring-restful-web-services

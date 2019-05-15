@@ -1,0 +1,6 @@
+Link to Create a pluralsight account:
+https://visualstudio.microsoft.com/dev-essentials/
+
+Spring core Fundamentals:
+Pluralsight: 
+https://app.pluralsight.com/player?course=spring-fundamentals&author=bryan-hansen&name=b17b4e91-a90a-45c5-8f18-f4d6f0904917&clip=0
