@@ -1,0 +1,323 @@
+package com.register.imdb;
+
+import java.io.*;
+import java.sql.SQLException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.dao.imdb.DaoClass;
+
+/**
+ * Servlet implementation class Registration
+ */
+@WebServlet("/Registration")
+public class Registration extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public Registration() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		 String Name=request.getParameter("name");
+		   String Email=request.getParameter("email"); 
+		   String Phone=request.getParameter("phone");
+		   String Password=request.getParameter("password"); 
+		   String Gender=request.getParameter("gender");
+
+		   PrintWriter out = response.getWriter();
+		  
+		
+		  boolean status=false;
+		  
+		  
+		  try { 
+			  status= new DaoClass().register(Name, Email, Phone, Password, Gender);
+			  }  
+		 catch (SQLException e1) { 
+			 e1.printStackTrace(); 
+			 }
+		  
+		  
+		  if(status==true) {
+		 response.sendRedirect("Login.html"); }
+		 }
+	
+
+}
+
+**********************************************
+package com.proj.imdb;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class ConnectionFactory {
+	
+	private static Connection con;
+	
+	public static Connection getConnection() {
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system", "orcl11g");
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return con;
+	}
+
+}
+
+**********************************************************************
+package com.pojo.imdb;
+
+public class NewUsers {
+	
+	String Name;
+	String Email;
+	String Phone;
+	String Password;
+	String Gender;
+	public String getName() {
+		return Name;
+	}
+	public void setName(String name) {
+		Name = name;
+	}
+	public String getEmail() {
+		return Email;
+	}
+	public void setEmail(String email) {
+		Email = email;
+	}
+	public String getPhone() {
+		return Phone;
+	}
+	public void setPhone(String phone) {
+		Phone = phone;
+	}
+	public String getPassword() {
+		return Password;
+	}
+	public void setPassword(String password) {
+		Password = password;
+	}
+	public String getGender() {
+		return Gender;
+	}
+	public void setGender(String gender) {
+		Gender = gender;
+	}
+	
+
+}
+
+**************************************************
+package com.login.imdb;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.dao.imdb.DaoClass;
+import com.proj.imdb.ConnectionFactory;
+
+/**
+ * Servlet implementation class Login
+ */
+@WebServlet("/Login")
+public class Login extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public Login() {
+        super();
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		doPost(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		 String Name=request.getParameter("name");
+		 String Password=request.getParameter("pwd");
+		 System.out.println(Name+" UI  "+Password);
+		 DaoClass dao = new DaoClass();
+		 
+		 boolean status = false;
+		 try {
+			 
+			status=dao.validate(Name,Password);
+			System.out.println(status);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 
+		// String qry ="select * from users where name='"+Name+"'";
+		 //System.out.println("Welcome "+Name);
+		 
+		// PreparedStatement pstmt = null;
+		 
+		 PrintWriter out = response.getWriter();
+		 if(status==true)
+		 {
+			 response.sendRedirect("Comments.html");
+		 }
+		 else
+		 {
+			 response.sendRedirect("Reg.html");
+		 }
+		// System.out.println("Printer");
+		// System.out.println("enterd into try");
+//		try {
+//			pstmt = con.prepareStatement(qry);
+//			 ResultSet rs=pstmt.executeQuery(); 
+//				System.out.println("inside try block");
+//
+//			 if(rs.next()) 
+//			 { 
+//			 if(rs.getString(4).equals(Password)) 
+//			 { 
+//			 out.println("welcome"+Name); 
+//			 } 
+//			 else 
+//			 { 
+//			 out.println("Invalid password try again"); 
+//			 } 
+//			 } 
+//			 //else
+//			 //{
+//				// <a href="HomePage.html">Home </a>
+//			 //}
+//			
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//		
+//		 finally {
+//			 out.close();
+//			 try {
+//				pstmt.close();
+//				 con.close();
+//			} catch (SQLException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//			
+//		 }
+//		System.out.println("Out of catch,finally");
+		
+	
+	}
+
+}
+
+**********************************************************
+package com.dao.imdb;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import com.proj.imdb.ConnectionFactory;
+
+public class DaoClass {
+	
+	public  boolean register(String Name,String Email,String Phone,String Password,String Gender) throws SQLException {
+
+		System.out.println(Name + Email + Phone);
+		Connection con = ConnectionFactory.getConnection();
+		System.out.println(con);
+		String qry = "insert into Newusers(Name ,Email, Phonenumber, Password, Gender) values(?,?,?,?,?)";
+		PreparedStatement pstmt = con.prepareStatement(qry);
+		pstmt.setString(1, Name);
+		pstmt.setString(2, Email);
+		pstmt.setString(3, Phone);
+		pstmt.setString(4, Password);
+		pstmt.setString(5, Gender);
+		
+		pstmt.executeUpdate();
+		return true;
+	}
+	
+	public boolean validate(String UIName,String UIPassword) throws SQLException {
+		Connection con = ConnectionFactory.getConnection();
+		System.out.println(con);
+		String qry1="select name,password from Newusers";
+		
+		
+		
+			PreparedStatement pstmt = con.prepareStatement(qry1);
+//			pstmt.setString(1, Name);
+//			pstmt.setString(2, Password);
+			ResultSet result = pstmt.executeQuery(qry1);
+			System.out.println(result);
+			while(result.next())
+			{
+				String name = result.getString("name");
+				String password = result.getString("password");
+				System.out.println(name+" db "+password);
+				if(UIName.equals(name) && UIPassword.equals(password))
+				{
+					return true;
+				}
+				
+			}	
+	
+		return false;
+		
+		
+		}
+
+	
+	/*
+	 * public static void main(String[] args) throws SQLException {
+	 * //ystem.out.println(new DaoClass().register("vidhya", "cvs@gmail.com",
+	 * "1234567", "abc", "F")); System.out.println(new DaoClass().validate("vidhya",
+	 * "abc")); }
+	 */
+
+}
+******************************************************

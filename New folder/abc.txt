@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  
+ 
+  <form action="CommentStorePath"  method="post">
+    <div class="form-group">
+      <label for="comment">Comment:</label>
+      <textarea class="form-control" rows="5" name="comment" ></textarea><br>
+        <input type ="submit" value="submit">
+    </div>
+  </form>
+</div>
+
+</body>
+</html>
+==================================================
+package com.servlet.CommentStore;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.SQLException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class CommentStore
+ */
+@WebServlet("/CommentStorePath")
+public class CommentStore extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public CommentStore() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		try {
+						new CommentsDAO().insert(new CommentPOJO(request.getParameter("comment")));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+	}
+
+}
+=========================================================================
+
+package com.servlet.CommentStore;
+
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import com.java.connection.ConnectionFactory;
+import java.sql.Connection;
+
+public class CommentsDAO
+{
+
+	
+	public void  insert(CommentPOJO comm) throws SQLException
+	{
+		String query="insert into Comments values(?)";
+		Connection conn =ConnectionFactory.getConnection();
+		PreparedStatement pStatement= conn.prepareStatement(query);
+		pStatement.setString(1, comm.getComment());
+	     pStatement.executeUpdate();
+		
+	}	
+	/*public static void main(String args[]) throws SQLException
+	{
+		CommentsDAO o=new CommentsDAO();
+		o.insert(new CommentPOJO("thiru"));
+	}*/
+}
+=====================================================================
+
+package com.servlet.CommentStore;
+
+public class CommentPOJO 
+{
+
+	String comment;
+
+	public CommentPOJO(String comment) {
+		super();
+		this.comment = comment;
+	}
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
+	@Override
+	public String toString() {
+		return "CommentPOJO [comment=" + comment + "]";
+	}
+	
+	
+}

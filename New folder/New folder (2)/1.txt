@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Comments HTML</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+
+<form action="CommentsDB" method="post">
+
+<div id="HCB_comment_box"><a href="http://localhost:8766/IMDB_Project/CommentsDB">Widget</a> is loading comments...</div>
+ <link rel="stylesheet" type="text/css" href="//www.htmlcommentbox.com/static/skins/bootstrap/twitter-bootstrap.css?v=0" />
+ <script type="text/javascript" id="hcb">
+ if(!window.hcb_user)
+ {
+	 hcb_user={};
+} 
+ (function()
+	{
+	 var s=document.createElement("script"), l=hcb_user.PAGE || (""+window.location).replace(/'/g,"%27"), h="//www.htmlcommentbox.com";s.setAttribute("type","text/javascript");s.setAttribute("src", h+"/jread?page="+encodeURIComponent(l).replace("+","%2B")+"&opts=16862&num=10&ts=1551329190864");if (typeof s!="undefined") document.getElementsByTagName("head")[0].appendChild(s);
+	 }
+ )();
+ </script>
+
+</form>
+ 
+</div>
+
+</body>
+</html>
+********************************************
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Register</title>
+</head>
+<body>
+
+<h1>Create Account</h1>
+
+<form action="Registration" method="post">
+Name : <input type="text" name="name"><br><br>
+Email : <input type="email" name="email"><br><br>
+Phone Number : <input type="number" name="phone"><br><br>
+Password : <input type="password" name="password"><br><br>
+Gender : 
+Female : <input type="radio" name="gender" value="F">
+Male : <input type="radio" name="gender" value="M"><br><br>
+
+<input type="submit" value="Create your IMDb account">
+</form>
+
+</body>
+</html>
+************************************
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Login</title>
+</head>
+<body>
+
+<form action="Login" method="post">
+Name : <input type="text" name="name" ><br><br>
+Password : <input type="password" name="pwd" ><br><br>
+
+<input type="submit" value="Submit"><br><br>
+
+</form>
+
+</body>
+</html>

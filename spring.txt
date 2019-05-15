@@ -1,0 +1,374 @@
+
+Java_Spring_Topics_A3 To A5_Cloud1
+
+Q1
+ 
+Which of the following is a Built in Resource Implementations that comes with spring?
+Single Choice - Select one correct answer from the options list.
+UrlResource...................
+ClassResource
+JMSQResource
+IOResource
+ 
+Q2
+ 
+Which of the following statements are true about Spring DAO Support? (choose all that apply)
+Multiple Choice - This may have multiple correct answers. Select required answer(s) from the options list.
+The DAO support in spring makes it easy to work with JDBC, Hibernate and JDO
+The DAO support in spring a persistance framework and we do not need JDBC, Hibernate or JDO......................................................
+The DAO support allows one to switch between the persistence  technologies
+The DAO support allows one to code without worrying about the exceptions.
+
+Q3
+ 
+Which of the following methods are available in JdbcTemplate class?
+Single Choice - Select one correct answer from the options list.
+QueryForInt(String sql).
+QueryForInt(String Sql,Object[] args)
+QueryForList(Sting sql,Object[] args_
+All the above..............................
+
+Q4
+
+Which advice is executed regardless of the means by which a join point exits (normal or exceptional return)?
+Single Choice - Select one correct answer from the options list.
+Before advice
+Around advice
+After returning advice
+After (finally) advice...........................
+
+Q5
+ 
+When injecting values using a constructor, what attributes are required within the <constructor-arg> element if no bean definition is embedded within the 
+<constructor-arg> element?
+Single Choice - Select one correct answer from the options list.
+value and type.......
+value or index
+value and ref
+value or ref
+
+Q6
+ 
+Which element is used to set default autowire behavior on all beans
+Single Choice - Select one correct answer from the options list.
+default-autowire
+default-autowire-type..........................
+default-autowire-name
+None of the above
+
+Q7
+ 
+Which of the following annotations can be used on fields, parameters or custom annotations?
+Single Choice - Select one correct answer from the options list.
+@autowired ..................
+@resource.
+@Qualifier.
+@component.
+
+Q8
+ 
+What is the use of SessionFactory?
+Multiple Choice - This may have multiple correct answers. Select required answer(s) from the options list.
+It is a factory pattern provided by Hibernate and cannot be used as such in Spring......................
+Manages the sessions linked the database...................
+Provides session one can use in the DAO to work with the database
+None of the above
+
+Q9
+ 
+What does MVC stand for?
+Single Choice - Select one correct answer from the options list.
+Model View Command
+Model View Controller............
+Mapped View Controller
+Mapped View Command
+
+Q10
+ 
+Spring container is responsible for creating the objects and configuring them.
+Single Choice - Select one correct answer from the options list.
+correct.................
+wrong
+
+Q11
+ 
+_______________is used to wrap the target DataSource to add awareness for spring managed transactions in J2EE Server.
+Single Choice - Select one correct answer from the options list.
+TransactionAwareDataSourceProxy ..........................
+DataSourceTransactionManager.
+SmartDataSource.
+AbstractDataSource.
+
+Q12
+ 
+Spring provides which of the following mechanisms of instantiating a bean:
+Multiple Choice - This may have multiple correct answers. Select required answer(s) from the options list.
+using the constructors
+using static factory methods
+using a factory bean................
+using BeanFactory.........
+
+Q13
+
+Following property is set for what reason
+spring.autoconfigure.exclude=
+my.xyz.SomeAutoConfig
+Single Choice - Select one correct answer from the options list.
+To exclude unnecessary or misconfigured .....................
+Auto configurations via
+properties 
+Reconfiguring 
+AutoConfiguration via
+properties
+Overriding conditions
+For completely
+custom 
+Autoconfiguration
+
+Q14
+
+How to configure database driver in spring?
+Single Choice - Select one correct answer from the options list.
+To configure your database driver using datasource "org.springframework.jdbc.datasource.DriverManagerDataSource". 
+For Example:
+
+<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+  <property name="driverClassName">
+    <value>org.hsqldb.jdbcDriver</value>...............................
+  </property>
+  <property name="url">
+    <value>jdbc:hsqldb:db/appfuse</value>
+  </property>
+  <property name="username"><value>sa</value></property>
+  <property name="password"><value></value></property>
+</bean>
+To configure your database driver using datasource "org.springframework.jdbc.datasource.DriverManagerDataSource". For Example:
+
+<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+  <property name="driverClassName">
+    <value>org.hsqldb.jdbcDriver</value>
+  </property>
+  <property name="url">
+    <value>jdbc:db/appfuse</value>
+  </property>
+  <property name="username"><value>sa</value></property>
+  <property name="password"><value></value></property>
+</bean>
+To configure your database driver using datasource "org.springframework.jdbc.datasource.DriverManagerDataSource". For Example:
+
+<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+  <property name="driverClassName" value=”value”>
+    <value>org.hsqldb.jdbcDriver</value>
+  </property>
+  <property name="url">
+    <value>jdbc:hsqldb:db/appfuse</value>
+  </property>
+  <property name="username"><value>sa</value></property>
+  <property name="password"><value></value></property>
+</bean>
+To configure your database driver using datasource "org.springframework.jdbc.datasource.DriverManagerDataSource". For Example:
+
+<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+  <property name="driverClassName">
+    <value>org.hsqldb.jdbcDriver</value>
+  </property>
+  <property name="url">
+    <value>jdbc:hsqldb:db/appfuse</value>
+  </property>
+  <properties name="username" value=”sa”></properties>
+  <properties name="password" value=”sa”> </properties>
+</bean>
+
+Q15
+ 
+What is the use of BeforeAdvice in spring?
+Single Choice - Select one correct answer from the options list.
+It allows to execute any code before the method is executed....................
+It allows to execute any code before an exception is thrown
+It allows to execute any code before spring container shuts down
+All of the above
+
+Q16
+ 
+In Spring, the basic IOC container is called as ___________.
+Single Choice - Select one correct answer from the options list.
+Package
+Web container
+Bean factory......................
+EJB container
+
+Q17
+ 
+Which of the following Exception class related to all the exceptions that are thrown in spring applications DAO?
+Single Choice - Select one correct answer from the options list.
+DataAccessException.
+DataAccessResourceFailureException....................
+DataIntegrityViolationException
+DataRetrievalFailureException
+ 
+Q18
+ 
+Which dependency need to be mentioned to enable Spring MVC module in an application
+Single Choice - Select one correct answer from the options list.
+spring-boot-starter-data-jpa
+spring-boot-starter-web.......................
+spring-boot-starter-test
+spring-boot-starter-tomcat
+
+Q19
+ 
+Consider the following scenario:
+For a method updateUser , we dont want the rollback for UserNotFoundException.
+what are the changes to be done in the configuration file? 
+      <tx:advice id="txAdvice">
+      <tx:attributes>
+     <tx:method name="updateUser"/>
+      <tx:method name="*"/>
+     </tx:attributes>
+     </tx:advice>
+
+Single Choice - Select one correct answer from the options list.
+replace <tx:method name="updateUser"/> with 
+<tx:method name="updateUser" no-rollback-for="UserNotFoundException"/>,...................
+
+replace <tx:method name="updateUser"/> with 
+<tx:method name="updateUser,-UserNotFoundException/>
+replace <tx:method name="updateUser"/> with 
+<tx:method name="updateUser,+UserNotFoundException/>
+replace <tx:method ="updateUser"/> with 
+<tx:method name="updateUser" no-rollback-for="UserNotFoundException"/>
+
+Q20
+ 
+What is the result if spring’s BeanFactory instance is programmatically accessed?
+Single Choice - Select one correct answer from the options list.
+The bean factory must be explicitly shutdown before the program exits
+The programmer gains control over the instantiation of the BeanFactory through the getInstance() method.
+It prevents bean instances from being injected by the factory.
+Beans may be explicitly obtained without interfering with the injection of instances into other beans.
+
+Q21
+ 
+Choose the correct implementation applied to the concrete class to make it transactional?
+Single Choice - Select one correct answer from the options list.
+public interface OrderService 
+       {
+         void createOrder(Order order);
+         List queryByCriteria(Order criteria);
+      }
+@Transaction
+     public interface OrderService {
+      void createOrder(Order order);
+      List queryByCriteria(Order criteria);
+      }
+@AspectJ
+    public interface OrderService {
+
+    void createOrder(Order order);
+    List queryByCriteria(Order criteria);
+   }
+@Transactional
+   public interface OrderService {
+  void createOrder(Order order);
+   List queryByCriteria(Order criteria);.....................
+  }
+
+Q22
+ 
+Which JdbcTemplate method do you use to execute a SQL insert statement and capture the value returned by the database?
+Single Choice - Select one correct answer from the options list.
+query().................
+queryForQbject()
+call()
+update()
+
+Q23
+ 
+Which build tools are supported by Spring Boot framework out of box
+Multiple Choice - This may have multiple correct answers. Select required answer(s) from the options list.
+Maven.......
+Gradle........
+Ant....
+Make
+
+Q24
+ 
+You can run SpringMVC application through java main method? 
+Single Choice - Select one correct answer from the options list.
+TRUE..............
+FALSE
+
+Q25
+
+Which of the following is not the types of Advice?
+Single Choice - Select one correct answer from the options list.
+Before advice.
+After returning advice.
+After completion advice.................
+After advice.
+
+Q26
+ 
+Statement A: Spring is lightweight Component in terms of both size and overhead
+
+Statement B: Objects in a Spring-enabled application often have no dependencies on Spring-specific classes
+Single Choice - Select one correct answer from the options list.
+Statement A and B are true.
+Statement A and B are false.
+Statement A is true and b is false.
+Statement A is fasle and b is true.
+
+Q27
+ 
+In DAO, The implementation of an application object requires only hibernate session factory.
+This can be provided as a simple bean reference from the spring application context. 
+Select the valid bean implementation for the above scenario:
+Single Choice - Select one correct answer from the options list.
+<beans>
+   <bean id=”emplDao” class=”emp.empDao”>
+   <property name=”sessionfactory” ref=”mysessionfactory”>.................
+   </bean>
+   </beans>
+<beans id=”emplDao” class=”emp.empDao”>
+   <property name=”sessionfactory” ref=”mysessionfactory”>
+   </beans>
+ 
+<beans>
+  < bean id=”emplDao” class=”emp.empDao”>
+   <property name=”*” ref=”mysessionfactory”>
+ </bean>
+ </beans>
+<beans>
+     <property name=”*” ref=”mysessionfactory”>
+ </bean>
+ </beans>
+
+Q28
+ 
+Which of the following container is responsible for containing and managing mentioned beans?
+Single Choice - Select one correct answer from the options list.
+EJB
+Web.............
+Applet
+IOC
+
+Q29
+ 
+Which of the following are true about Spring MVC?
+Multiple Choice - This may have multiple correct answers. Select required answer(s) from the options list.
+Spring provides a way in which Bean Lifecycle is managed............
+Spring’s MVC uses BeanFactory for IOC
+Spring MVC contains DispatcherServlet,Controllers and ViewResolvers........
+Spring MVC uses @RequestMapping annotation to map request to controller methods.............
+
+Q30
+ 
+What is the difference between after returning and after throwing advice?
+Single Choice - Select one correct answer from the options list.
+After-returning ...............................is executed if method exits normally without throwing error. After throwing executes when a method throws an exception.
+After-throwing is executed if method exits normally without throwing error. After returning executes when a method throws an exception
+After returning is called after After-throwing
+After-throwing is called after After-returning
+
+Spring
+1234567891011121314151617181920212223242526272829301 out of 30 

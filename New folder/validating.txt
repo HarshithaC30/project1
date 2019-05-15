@@ -1,0 +1,54 @@
+var express = require('express');
+var app = express();
+var bodyParser = require('body-parser);
+
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+
+var User = new Schema ({
+    username : String,
+    password : String
+});
+
+mongoose.model('User',User);
+mongoose.connect('mongodb://localhost:27017/MyDB');
+
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.set('view engine', 'ejs');
+
+app.get('/',function(req,res)
+{
+    res.render('LoginPage');
+});
+
+app.get('/MainPage',function(req,res)
+{
+    res.render('MainPage');
+});
+
+app.post('/MainPage', function(req, res)
+{
+    // new code should come over here
+    User.findOne({username: req.body.username, password: req.body.password}, function(err, user){
+        if(err) {
+            console.log(err);
+        }
+        else if(user){
+            res.redirect('/MainPage');
+        }
+        else {
+            console.log('Invalid');
+        }
+    });
+
+});
+
+app.get('*', function(req,res)
+{
+    res.send('Bad Route!');
+});
+
+var server = app.listen(3000, function() {
+    console.log('listening on port 3000.');
+});
